@@ -1,0 +1,24 @@
+name = "tyrachat-relay"
+main = "worker.js"
+compatibility_date = "2025-04-01"
+
+[[durable_objects.bindings]]
+name = "ROOMS"
+class_name = "Room"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Room"]
+
+[vars]
+# Páginas que pueden usar el relay, separadas por comas y sin barra final.
+# Ejemplo: "https://tyravtuber.github.io"   (vacío = cualquiera)
+ALLOWED_ORIGINS = ""
+KICK_VERIFY = "on"
+
+# Claves: se ponen en Cloudflare → tu Worker → Settings → Variables and Secrets (tipo Secret).
+# Todas opcionales:
+#   TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET
+#   KICK_CLIENT_ID, KICK_CLIENT_SECRET
+#   GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, YOUTUBE_API_KEY
+#   STATE_SECRET   (cualquier texto largo inventado)
